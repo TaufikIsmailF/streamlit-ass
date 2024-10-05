@@ -71,15 +71,18 @@ if option == 'Prediction':
     # User inputs for prediction
     st.subheader("Input features for prediction")
     age = st.slider("AGE", int(df["AGE"].min()), int(df["AGE"].max()), 50)
-    gender = st.selectbox("Gender", ["Male", "Female"])
+    selected_gender = st.selectbox("GENDER", ["Male", "Female"])
     smoking = st.selectbox("Smoking Habit", ["Yes", "No"])
 
     # Convert user input to numerical values
-    gender_num = 1 if gender == "Male" else 0
+    gender_num = 1 if selected_gender == "Male" else 0
     smoking_num = 1 if smoking == "Yes" else 0
 
+    # Create a DataFrame for the input features
+    input_data = pd.DataFrame([[age, gender_num, smoking_num]], columns=['AGE', 'GENDER_NUM', 'SMOKING_NUM'])
+
     # Make a prediction
-    prediction = model.predict([[age, gender_num, smoking_num]])
+    prediction = model.predict(input_data)
 
     # Display the prediction result
     if prediction[0] == 1:
