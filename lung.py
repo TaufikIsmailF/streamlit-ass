@@ -90,8 +90,9 @@ if option == 'Prediction':
     else:
         st.write("### Prediction: Low risk of Lung Cancer")
 
-    # Evaluate the model
-    st.write("### Model Accuracy")
-    y_pred = model.predict(X_test)
-    accuracy = accuracy_score(y_test, y_pred)
-    st.write(f"Accuracy: {accuracy * 100:.2f}%")
+ # Evaluate the model
+st.write("### Model Accuracy")
+y_pred = model.predict(X_test)
+accuracy = accuracy_score(y_test, y_pred)
+st.write(f"Accuracy: {accuracy * 100:.2f}%")
+
